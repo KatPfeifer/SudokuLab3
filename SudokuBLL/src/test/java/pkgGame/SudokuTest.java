@@ -351,14 +351,12 @@ public class SudokuTest {
 		assertFalse(Arrays.equals(arr, sp.getPuzzle()));
 	}
 	
-	/*
-	
 	@Test
 	public void printPuzzleTest() throws Exception {
 		int [][] mySquare = {{1,2,3,4},{3,4,1,2},{2,3,4,1},{4,1,2,3}};
 		Sudoku sud = new Sudoku(mySquare);
-		sud.printPuzzle();
+		//sud.printPuzzle();
 	}
-	*/
+	
 	
 }
