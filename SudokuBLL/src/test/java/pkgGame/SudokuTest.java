@@ -284,8 +284,8 @@ public class SudokuTest {
 	public void ShuffleArrayTest() throws Exception {
 		int [][] mySquare = {{1,2,3,4},{3,4,1,2},{2,3,4,1},{4,1,2,3}};
 		Sudoku puz= new Sudoku(mySquare);
-		int [] origArr= {1,2,3,4};
-		int [] arr= {1,2,3,4};
+		int [] origArr= {1,2,3,4,5,6};
+		int [] arr= {1,2,3,4,5,6};
 		puz.shuffleArray(origArr);
 		assertFalse(Arrays.equals(arr,origArr));
 	}
@@ -306,7 +306,6 @@ public class SudokuTest {
 		Sudoku puzz = new Sudoku(mySquare);
 		int [] origRegion=puzz.getRegion(0);
 		puzz.shuffleRegion(0);
-		//puzz.printPuzzle();
 		int [] region=puzz.getRegion(0);
 		assertFalse(Arrays.equals(origRegion,region));
 	}
@@ -317,7 +316,6 @@ public class SudokuTest {
 		Sudoku puzzletwo = new Sudoku(mySquare);
 		int [] origRegion=puzzletwo.getRegion(0);
 		puzzletwo.shuffleRegion(0);
-		//puzzletwo.printPuzzle();
 		int [] region=puzzletwo.getRegion(0);
 		assertFalse(Arrays.equals(origRegion,region));
 	}
@@ -327,7 +325,6 @@ public class SudokuTest {
 		int [][] mySquare = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
 		Sudoku sudoku = new Sudoku(mySquare);
 		sudoku.setRegion(0);
-		//sudoku.printPuzzle();
 		int [] region = {1,2,3,4};
 		assertTrue(Arrays.equals(region, sudoku.getRegion(0)));
 	}
@@ -337,7 +334,6 @@ public class SudokuTest {
 		int [][] mySquare = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};
 		Sudoku sudo = new Sudoku(mySquare);
 		sudo.setRegion(5);
-		//sudo.printPuzzle();
 		int[] region = {1,2,3,4,5,6,7,8,9};
 		assertTrue(Arrays.equals(region, sudo.getRegion(5)));
 	}
@@ -346,7 +342,6 @@ public class SudokuTest {
 		int [][] mySquare = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};
 		Sudoku sp = new Sudoku(mySquare);
 		sp.FillDiagonalRegions();
-		//sp.printPuzzle();
 		int [][] arr = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};
 		assertFalse(Arrays.equals(arr, sp.getPuzzle()));
 	}
@@ -355,8 +350,7 @@ public class SudokuTest {
 	public void printPuzzleTest() throws Exception {
 		int [][] mySquare = {{1,2,3,4},{3,4,1,2},{2,3,4,1},{4,1,2,3}};
 		Sudoku sud = new Sudoku(mySquare);
-		//sud.printPuzzle();
+		sud.printPuzzle();
 	}
-	
 	
 }
