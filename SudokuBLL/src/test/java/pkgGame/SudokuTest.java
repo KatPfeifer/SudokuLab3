@@ -229,7 +229,7 @@ public class SudokuTest {
 			fail("Test failed to build a Sudoku");
 		}
 		
-	}	*/
+	}	
 
 	@Test
 	public void TestRegionNbr()
@@ -258,4 +258,107 @@ public class SudokuTest {
 		assertTrue(Arrays.equals(Region5, s1.getRegion(5)));
 		
 	}
+	*/
+		
+	@Test
+	public void GetRegionNbrTest() throws Exception {
+		int [][] mySquare = {{1,2,3,4},{3,4,1,2},{2,3,4,1},{4,1,2,3}};
+		Sudoku puzzle = new Sudoku(mySquare);
+		int iRow=2;
+		int iCol=0;
+		int regionNumber=2;
+		assertEquals(regionNumber,puzzle.getRegionNbr(iCol,iRow));
+	}
+	
+	@Test
+	public void GetRegionNbrTest2() throws Exception {
+		int [][] mySquare2 = {{5,3,4,6,7,8,9,1,2},{6,7,2,1,9,5,4,3,8},{1,9,8,3,4,2,5,6,7},{8,5,9,7,6,1,4,2,3},{4,2,6,8,5,3,7,9,1},{7,1,3,9,2,4,8,5,6},{9,6,1,5,3,7,2,8,4},{2,8,7,4,1,9,6,3,5},{3,4,5,2,8,6,1,7,9}};
+		Sudoku p = new Sudoku(mySquare2);
+		int iRow=5;
+		int iCol=3;
+		int regionNumber=4;
+		assertEquals(regionNumber,p.getRegionNbr(iCol,iRow));
+	}
+
+	@Test
+	public void ShuffleArrayTest() throws Exception {
+		int [][] mySquare = {{1,2,3,4},{3,4,1,2},{2,3,4,1},{4,1,2,3}};
+		Sudoku puz= new Sudoku(mySquare);
+		int [] origArr= {1,2,3,4};
+		int [] arr= {1,2,3,4};
+		puz.shuffleArray(origArr);
+		assertFalse(Arrays.equals(arr,origArr));
+	}
+	
+	@Test
+	public void ShuffleArrayTest2() throws Exception {
+		int [][] mySquare = {{5,3,4,6,7,8,9,1,2},{6,7,2,1,9,5,4,3,8},{1,9,8,3,4,2,5,6,7},{8,5,9,7,6,1,4,2,3},{4,2,6,8,5,3,7,9,1},{7,1,3,9,2,4,8,5,6},{9,6,1,5,3,7,2,8,4},{2,8,7,4,1,9,6,3,5},{3,4,5,2,8,6,1,7,9}};
+		Sudoku puzzl= new Sudoku(mySquare);
+		int [] origArr= {1,2,3,4,5,6,7,8,9};
+		int [] arr= {1,2,3,4,5,6,7,8,9};
+		puzzl.shuffleArray(origArr);
+		assertFalse(Arrays.equals(arr,origArr));
+	}
+	
+	@Test
+	public void shuffleRegionTest() throws Exception {
+		int [][] mySquare = {{1,2,0,0},{3,4,0,0},{0,0,0,0},{0,0,0,0}};
+		Sudoku puzz = new Sudoku(mySquare);
+		int [] origRegion=puzz.getRegion(0);
+		puzz.shuffleRegion(0);
+		//puzz.printPuzzle();
+		int [] region=puzz.getRegion(0);
+		assertFalse(Arrays.equals(origRegion,region));
+	}
+	
+	@Test
+	public void shuffleRegionTest2() throws Exception {
+		int [][] mySquare = {{1,2,3,0,0,0,0,0,0,0},{4,5,6,0,0,0,0,0,0,0},{7,8,9,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};
+		Sudoku puzzletwo = new Sudoku(mySquare);
+		int [] origRegion=puzzletwo.getRegion(0);
+		puzzletwo.shuffleRegion(0);
+		//puzzletwo.printPuzzle();
+		int [] region=puzzletwo.getRegion(0);
+		assertFalse(Arrays.equals(origRegion,region));
+	}
+	
+	@Test
+	public void setRegionTest() throws Exception {
+		int [][] mySquare = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+		Sudoku sudoku = new Sudoku(mySquare);
+		sudoku.setRegion(0);
+		//sudoku.printPuzzle();
+		int [] region = {1,2,3,4};
+		assertTrue(Arrays.equals(region, sudoku.getRegion(0)));
+	}
+	
+	@Test
+	public void setRegionTest2() throws Exception {
+		int [][] mySquare = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};
+		Sudoku sudo = new Sudoku(mySquare);
+		sudo.setRegion(5);
+		//sudo.printPuzzle();
+		int[] region = {1,2,3,4,5,6,7,8,9};
+		assertTrue(Arrays.equals(region, sudo.getRegion(5)));
+	}
+	@Test
+	public void FillDiagonalRegionsTest() throws Exception {
+		int [][] mySquare = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};
+		Sudoku sp = new Sudoku(mySquare);
+		sp.FillDiagonalRegions();
+		//sp.printPuzzle();
+		int [][] arr = {{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0}};
+		assertFalse(Arrays.equals(arr, sp.getPuzzle()));
+	}
+	
+	/*
+	
+	@Test
+	public void printPuzzleTest() throws Exception {
+		int [][] mySquare = {{1,2,3,4},{3,4,1,2},{2,3,4,1},{4,1,2,3}};
+		Sudoku sud = new Sudoku(mySquare);
+		sud.printPuzzle();
+	}
+	*/
+	
 }
