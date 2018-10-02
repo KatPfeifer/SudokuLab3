@@ -335,6 +335,5 @@ public class Sudoku extends LatinSquare {
 			setRegion(region);
 			shuffleRegion(region);	
 		}
-		
 	}
 }

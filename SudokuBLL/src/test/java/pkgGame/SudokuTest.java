@@ -352,5 +352,4 @@ public class SudokuTest {
 		Sudoku sud = new Sudoku(mySquare);
 		sud.printPuzzle();
 	}
-	
 }
